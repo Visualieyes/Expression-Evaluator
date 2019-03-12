@@ -1,16 +1,21 @@
-all: ds eval
+all: libds lltest stacktest qtest
 
-ds: ds/lib/libds.a
+libds: gentype.h linkedlist.h linkedlist.c stack.h stack.c queue.h queue.c
+	gcc -c linkedlist.c queue.c stack.c
+	ar rcs lib/libds.a linkedlist.o queue.o stack.o
+	rm *.o
+	
+lltest: libds ll-tests.c
+	gcc ll-tests.c -Llib -lds -o lltest
 
-ds/lib/libds.a:
-	$(MAKE) -C ds
-        
-eval: intStack/istack.h intStack/istack.c ds/lib/libds.a lab7.c
-	gcc intStack/istack.c lab7.c -Lds/lib -lds -o eval
+stacktest: lib/libds.a stack-tests.c
+	gcc stack-tests.c -Llib -lds -o stacktest
+
+qtest: lib/libds.a queue-tests.c
+	gcc queue-tests.c -Llib -lds -o qtest
 
 clean:
-	@rm -f *.o eval
-	$(MAKE) -C ./ds clean
-	
+	@rm -f *.o lltest stacktest qtest
+
 cleanall: clean
-	$(MAKE) -C ./ds cleanall
+	@rm -f lib/libds.a
