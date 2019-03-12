@@ -15,9 +15,9 @@
 #include <string.h>
 #include <assert.h>
 
-#include "ds/stack.h"
-#include "ds/queue.h"
-#include "intStack/istack.h"
+#include "stack.h"
+#include "queue.h"
+#include "istack.h"
 
 // Helper Functions
 Queue_t tokenize(char* expression);
