@@ -1,3 +1,9 @@
+/**
+ *  COMP220: Lab 7 Starter Project - Stacks & Queues
+ *  Author:  Keyann Al-Kheder
+ *  Date:    Mar. 6, 2018
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
